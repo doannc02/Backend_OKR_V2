@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the project files to the container
 COPY . .
 
+# Restore the project dependencies
+RUN dotnet restore
+
 # Build the project
 RUN dotnet build -c Release
 
@@ -26,4 +29,4 @@ COPY --from=build /app/out .
 EXPOSE 80
 
 # Set the entry point for the container
-ENTRYPOINT ["dotnet"]
+ENTRYPOINT ["dotnet", "ASP_NetCore.dll"]
