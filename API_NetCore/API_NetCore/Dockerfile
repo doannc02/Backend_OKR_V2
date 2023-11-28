@@ -32,3 +32,4 @@ EXPOSE 80
 
 # Set the entry point for the container
 ENTRYPOINT ["dotnet", "ASP_NetCore.dll"]
+
