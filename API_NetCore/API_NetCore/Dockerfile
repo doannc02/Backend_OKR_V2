@@ -1,5 +1,7 @@
-# Use the official .NET Core SDK image as the base image
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM <base_image>
+
+# Rest of your Dockerfile instructions...
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
