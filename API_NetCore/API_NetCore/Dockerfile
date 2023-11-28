@@ -10,15 +10,17 @@ COPY . .
 # Restore the project dependencies
 RUN dotnet restore
 
+# Build the project
+RUN dotnet publish -c Release -o out
+
+# Use a smaller base image for runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the published output from the build stage to the runtime stage
 COPY --from=build /app/out .
-
-# Build the project
-RUN dotnet build 
 
 # Expose the port that the application listens on
 EXPOSE 80
